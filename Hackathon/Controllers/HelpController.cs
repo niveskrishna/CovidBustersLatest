@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Hackathon.Controllers
+{
+    public class HelpController : Controller
+    {
+      
+        public ActionResult GetHelp()
+        {
+            return View();
+        }
+
+
+
+    }
+}

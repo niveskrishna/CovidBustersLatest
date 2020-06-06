@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "SleepDisorderAssesment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:darkgoldenrod">Sleep Disorder Assesment</h1>
+<table style="color:darkgoldenrod">
+    <tr>
+        <td>How are your sleeping habits over past few months ?</td>
+    </tr>
+    <tr>
+        <td>< 4 Hours @Html.RadioButton("SleepingHabbits", "lessthanfourhours")&nbsp;&nbsp;&nbsp;&nbsp; 4 - 6 hours @Html.RadioButton("SleepingHabbits", "fourtosixhours")&nbsp;&nbsp;&nbsp;&nbsp; 6 -8 hours @Html.RadioButton("SleepingHabbits", "sixtoeighthours")&nbsp;&nbsp;&nbsp;&nbsp;> 8 Hours @Html.RadioButton("SleepingHabbits", "greaterthaneighthours")&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+    </tr>
+    <tr>
+        <td>Have you noticed any changes..?</td>
+        <td>Difficulty Sleeping @Html.RadioButton("SleepingChanges", "difficultysleeping")&nbsp;&nbsp;&nbsp;&nbsp;Restlessness @Html.RadioButton("SleepingChanges", "restlessness")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>How was the quality of sleep?</td>      
+    </tr>
+    <tr>
+        <td>Tired When You Get Up @Html.RadioButton("SleepingQuality", "tired")&nbsp;&nbsp;&nbsp;&nbsp; Feel Fresh and Active @Html.RadioButton("SleepingQuality", "fresh")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Appetite over the past few weeks..?  </td>
+    </tr>
+    <tr>
+        <td>
+         Good @Html.RadioButton("Apetite", "Good")&nbsp;&nbsp;&nbsp;&nbsp;Average @Html.RadioButton("Apetite", "Average")&nbsp;&nbsp;&nbsp;&nbsp;Poor @Html.RadioButton("Apetite", "Poor")&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td>Have your eating habits altered in any way..?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("EatingHabbitsAltered", "Yes")&nbsp;&nbsp;&nbsp;&nbsp;No @Html.RadioButton("EatingHabbitsAltered", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td> <input  class="btn btn-info" style="color:darkgoldenrod;background-color:white;" value="Submit" id="btnSubmit"  onclick="location.href='@Url.Action("Index", "UnderProcess")'"></td>
+    </tr>
+</table>
+                                                             
+                                                         
+

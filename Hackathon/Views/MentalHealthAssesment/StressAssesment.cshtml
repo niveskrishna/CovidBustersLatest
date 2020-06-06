@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "StressAssesment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1   style="color:darkgoldenrod">Stress Assesment</h1>
+<table style="color:darkgoldenrod">
+    <tr>
+        <td>Do you at times feel nervous? </td>
+    </tr>
+    <tr>
+        <td> Yes @Html.RadioButton("nervous", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("nervous", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Do you at times feel frustrated? </td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("frustated", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("frustated", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Are you insomniac?  </td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("insomaniac", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("insomaniac", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Do you feel low on energy? </td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("energy", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("energy", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Do you have severe headaches recently which comes back after medication?</td>
+    </tr>
+    <tr>
+        <td>
+            Yes @Html.RadioButton("headache", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("headache", "No")&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td>Do you know what led to this emotion?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("emotiontrigger", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("emotiontrigger", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>If Yes. Is it result of a recent activity?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("recent", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("recent", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>How recent was that event?</td>
+    </tr>
+    <tr>
+        <td>1-2 days back  @Html.RadioButton("howrecent", "days")&nbsp;&nbsp;&nbsp;&nbsp; A week back @Html.RadioButton("howrecent", "weeks")&nbsp;&nbsp;&nbsp;&nbsp; A couple of months back @Html.RadioButton("howrecent", "months")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>
+            <input  class="btn btn-info" style="color:darkgoldenrod;background-color:white;" value="Submit" id="btnSubmit"  onclick="location.href='@Url.Action("Index", "UnderProcess")'">
+        </td>
+    </tr>
+</table>

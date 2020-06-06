@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "DepressionAssesment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1  style="color:darkgoldenrod">Depression  Assesment</h1>
+<table style="color:darkgoldenrod">
+    <tr>
+        <td>
+            Do you feel sad or hopeless?
+        </td>
+           
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("hopeless", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("hopeless", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Have you lost interest in most of your daily chores?</td>
+    </tr>
+    <tr>
+        <td> Yes @Html.RadioButton("lossofinterest", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("lossofinterest", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Have you lost OR gained weight suddenly?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("weight", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("weight", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Have you recently started too much binge eating?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("bingeeating", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("bingeeating", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Have you recently lost your appetite by more than 70%-80%?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("lossofappetite", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("lossofappetite", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Do you feel restless and/or are unable to sit still?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("sitstill", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("sitstill", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Do you feel unworthy and/or guilty every other day?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("guilt", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("guilt", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Have you experienced a week or longer of lower-than-usual interest in activities that you usually enjoy? Examples might include work, exercise, or hobbies.</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("lowintrestinhobbies", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("lowintrestinhobbies", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Do you find it hard to focus, remember things, or make decisions quite often?</td>
+    </tr>
+    <tr>
+        <td>
+            Yes @Html.RadioButton("hardtofocus", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("hardtofocus", "No")&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td>  <input  class="btn btn-info" style="color:darkgoldenrod;background-color:white;" value="Submit" id="btnSubmit"   onclick="location.href='@Url.Action("Index", "UnderProcess")'"></td>
+    </tr>
+</table>

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "AnxietyAssesment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1  style="color:darkgoldenrod">Anxiety Assesment</h1>
+<table style="color:darkgoldenrod">
+    <tr>
+        <td>Do you feel lonely at times?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("lonely", "Yes")&nbsp;&nbsp;&nbsp;&nbsp;No @Html.RadioButton("lonely", "NO")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>  Do you have a worry which interferes with your daily life activities?</td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("worry", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("worry", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Do you have any OCD (Obsessive Compulsive Disorder)? </td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("ocd", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("ocd", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Do feelings of anxiety or discomfort around others bother you? </td>
+    </tr>
+    <tr>
+        <td>Yes @Html.RadioButton("discomfort", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("discomfort", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Do you have any kind of fear which reaches at its peak within minutes? </td>
+    </tr>
+    <tr>
+        <td>
+            Yes @Html.RadioButton("fear", "Yes")&nbsp;&nbsp;&nbsp;&nbsp; No @Html.RadioButton("fear", "No")&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input  class="btn btn-info" style="color:darkgoldenrod;background-color:white;" value="Submit" id="btnSubmit" onclick="location.href='@Url.Action("Index", "UnderProcess")'">
+        </td>
+    </tr>
+</table>

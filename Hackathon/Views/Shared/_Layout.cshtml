@@ -1,0 +1,177 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hackathon</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @*<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">*@
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary" style="color:darkgoldenrod;background-color:white;" onclick="location.href='@Url.Action("Index", "Home")'">
+                        Home
+                    </button>
+                    <button type="button" class="btn btn-primary" style="color:darkgoldenrod;background-color:white;" onclick="location.href='@Url.Action("GetHelp", "Help")'">Get Help</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="color:darkgoldenrod;background-color:white;">
+                        Take Assesment
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu  dropdown-menu-right" style="color:darkgoldenrod;">
+                        @Html.ActionLink("Routine Assesment", "RoutineAssesment", "MentalHealthAssesment", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Sleep Disorders", "SleepDisorderAssesment", "MentalHealthAssesment", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Anxiety", "AnxietyAssesment", "MentalHealthAssesment", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Stress", "StressAssesment", "MentalHealthAssesment", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Depression", "DepressionAssesment", "MentalHealthAssesment", null, new { @class = "dropdown-item" })
+                    </div>
+
+                </div>
+
+
+                <p class="navbar-nav flex-grow-1">
+
+                <p><a href="#" style="color:darkgoldenrod;background-color:white;display:none;" data-toggle="modal" data-target="#myModal">Register Here</a></p>
+                <button type="button" id="btnLogOut "class="btn btn-primary" style="color:darkgoldenrod;background-color:white;display:none;" onclick="location.href='@Url.Action("Index", "Home")'">
+                 Log Out 
+                </button>
+                 <p id="sessionuser" style="color:red;display:none"></p>
+            </div>
+
+
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <p>
+                <marquee>
+            <p style="color:red;"><b>Covid Alert!</b></p>
+            <p style="color:darkgoldenrod;">Stay at home if you feel unwell.If you have  a fever cough difficulty breathing,seek medical attention and call in advance.Follow the directions of your local health authority.</p>
+            </marquee>
+
+
+
+
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="align-content:center;color:darkgoldenrod;">SignUp/Login</h4>
+                    <a href="#" style="padding-left:210px;color:darkgoldenrod;" id="newuserhref">New User</a>
+                    <a href="#" style="padding-left:170px;color:darkgoldenrod;display:none;" id="existinguserhref">Existing User</a>
+                    <button type="button" id="modalclosed" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="userName" style="color:darkgoldenrod;" id="lblUserNumber"> User Name:</label>
+                        <input type="text" class="form-control" id="usr" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd" style="color:darkgoldenrod;" id="lblPassword">Password:</label>
+                        <input type="password" class="form-control" id="pwd" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmpwd" style="color:darkgoldenrod;display:none" id="lblConfirmpassword">Confirm Password:</label>
+                        <input type="password" style="display:none" class="form-control" id="confirmpwd" required="true">
+                    </div>
+
+                </div>
+                <div class="modal-footer" style="align-content:center;">
+                    @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
+                    <p id="registermsg" style="color:red;display:none;padding-right:100px;"></p>
+                    <input type="submit" class="btn btn-info" style="color:darkgoldenrod;background-color:white;display:none;" value="Register" id="btnRegister">
+                    <input type="submit" class="btn btn-info" style="color:darkgoldenrod;background-color:white;" value="Login" id="btnLogin" visible="false">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Hackathon 
+            @*<a asp-area="" asp-controller="" asp-action="" >Privacy</a>*@
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js">
+
+    </script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/modalpopup.js"></script>
+    <script type="text/javascript">
+        $("#btnRegister").click(function () {
+            var uname = $("#usr").val();
+            var pwd = $("#pwd").val();
+
+            $.ajax({
+                type: 'POST',
+                url: "../User/Register",
+                data: { username: uname, password: pwd },
+                success: function (result) {
+                    $("#registermsg").text(result);
+                    $("#registermsg").show();
+                }
+            })
+        });
+
+        $("#btnLogin").click(function () {
+            var uname = $("#usr").val();
+            var pwd = $("#pwd").val();
+
+         $.get('/User/Login/', function () {
+
+
+             window.location.href = '@Url.Action("Login","User")'
+         });
+
+        });
+
+        @*var sessionUserDetails = '@HttpContextAccessor.HttpContext.Session.GetString("UserName")';
+        if (sessionUserDetails == null)
+        {
+            $("#sessionuser").text("");
+            document.getElementById("sessionuser").style = "display:none;"
+
+            $("#btnLogOut").hide();
+        }
+        else
+        {
+            //Show the Session Text
+             $("#sessionuser").show();
+             $("#sessionuser").text(sessionUserDetails);
+            //Show the Log out Button
+            $("#btnLogOut").show();
+        }*@
+
+       
+
+
+    </script>
+   
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

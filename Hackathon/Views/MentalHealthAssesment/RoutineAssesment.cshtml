@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "RoutineAssesment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:darkgoldenrod">Routine  Assesment</h1>
+<table style="color:darkgoldenrod">
+    <tr>
+        <td>How are you feeling today?</td>
+    </tr>
+    <tr>
+        <td>Happy @Html.RadioButton("Feeling", "Happy")&nbsp;&nbsp;&nbsp;&nbsp;  Sad @Html.RadioButton("Feeling", "Sad")&nbsp;&nbsp;&nbsp;&nbsp;Angry @Html.RadioButton("Feeling", "Angry")&nbsp;&nbsp;&nbsp;&nbsp;Neutral @Html.RadioButton("Feeling", "Neutral")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+
+    <tr>
+        <td>Do you often feel this way?</td>
+    </tr>
+    <tr>
+        <td> Yes @Html.RadioButton("FeelingOften", "Yes")&nbsp;&nbsp;&nbsp;&nbsp;  No @Html.RadioButton("FeelingOften", "No")&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+
+    <tr>
+        <td>  How often this happens to you?</td>
+    </tr>
+
+    <tr>
+        <td>Once In a While @Html.RadioButton("FeelingFrequency", "While")&nbsp;&nbsp;&nbsp;&nbsp;Once In a Week @Html.RadioButton("FeelingFrequency", "Week")&nbsp;&nbsp;&nbsp;&nbsp;Once In a Month @Html.RadioButton("FeelingFrequency", "Month")  </td>
+    </tr>
+
+    <tr>
+        <td><br /><input  class="btn btn-info" style="color:darkgoldenrod;background-color:white;" value="Submit" id="btnSubmit" onclick="location.href='@Url.Action("Index", "UnderProcess")'"></td>
+    </tr>
+
+</table>
