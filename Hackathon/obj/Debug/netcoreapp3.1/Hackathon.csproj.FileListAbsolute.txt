@@ -303,7 +303,6 @@ D:\Hackathon\CovidBusters-master\CovidBusters-master\Hackathon\obj\Debug\netcore
 D:\Hackathon\CovidBusters-master\CovidBusters-master\Hackathon\obj\Debug\netcoreapp3.1\Hackathon.genruntimeconfig.cache
 D:\Hackathon\CovidBusters-master\CovidBusters-master\Hackathon\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
 D:\Hackathon\CovidBusters-master\CovidBusters-master\Hackathon\obj\Debug\netcoreapp3.1\Razor\Views\UnderProcess\Index.cshtml.g.cs
-D:\Hackathon\CovidBusters-master\CovidBusters-master\Hackathon\obj\Debug\netcoreapp3.1\Hackathon.csprojAssemblyReference.cache
 D:\Hackathon\CovidBusters-master\CovidBusters-master\Hackathon\obj\Debug\netcoreapp3.1\Hackathon.MvcApplicationPartsAssemblyInfo.cache
 D:\Hackathon\CovidBusters-master\CovidBusters-master\Hackathon\bin\Debug\netcoreapp3.1\System.Data.OleDb.dll
 D:\Hackathon\CovidBusters-master\CovidBusters-master\Hackathon\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
