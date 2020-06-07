@@ -24,10 +24,10 @@
                         Home
                     </button>
                     <button type="button" class="btn btn-primary" style="color:darkgoldenrod;background-color:white;" onclick="location.href='@Url.Action("GetHelp", "Help")'">Get Help</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="color:darkgoldenrod;background-color:white;">
-                        Take Assesment
+                    <input type="button" id="assesment" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="color:darkgoldenrod;background-color:white;display:none;" value="Take Assesment">
+                       
                         <span class="caret"></span>
-                    </button>
+                    </input>
                     <div class="dropdown-menu  dropdown-menu-right" style="color:darkgoldenrod;">
                         @Html.ActionLink("Routine Assesment", "RoutineAssesment", "MentalHealthAssesment", null, new { @class = "dropdown-item" })
                         @Html.ActionLink("Sleep Disorders", "SleepDisorderAssesment", "MentalHealthAssesment", null, new { @class = "dropdown-item" })
@@ -37,17 +37,16 @@
                     </div>
 
                 </div>
-
+                <p style="color:darkgoldenrod;padding-left: 280px;"><b>Welcome to Hack Mental Health!!!</b></p>
 
                 <p class="navbar-nav flex-grow-1">
 
-                <p><a href="#" style="color:darkgoldenrod;background-color:white;display:none;" data-toggle="modal" data-target="#myModal">Register Here</a></p>
-                <p style="color:darkgoldenrod;">HackMentalHealth</p>
-                <subtitle id="stigma" style="color:darkgoldenrod;">Stand Against the stigma.No health without mental health!</subtiltle>
-                <button type="button" id="btnLogOut "class="btn btn-primary" style="color:darkgoldenrod;background-color:white;display:none;" onclick="location.href='@Url.Action("Index", "Home")'">
-                 Log Out 
-                </button>
-                 <p id="sessionuser" style="color:red;display:none"></p>
+                <p><a href="#" id="linkregister" style="color:darkgoldenrod;background-color:white;display:none;" data-toggle="modal" data-target="#myModal">Register Here</a></p>
+                @*<p style="color:darkgoldenrod;">HackMentalHealth</p>
+        <subtitle id="stigma" style="color:darkgoldenrod;">Stand Against the stigma.No health without mental health!</subtiltle>*@
+
+                <p id="sessionuser" style="color:darkgoldenrod;display:none;font-weight:30px"></p>&nbsp;&nbsp;
+                <input type="button" class="btn btn-info" style="color:darkgoldenrod;background-color:white;display:none;" value="Logout" id="btnLogout"  onclick="location.href='@Url.Action("Logout", "User")'">
             </div>
 
 
@@ -63,7 +62,7 @@
 
 
 
-
+            
             @RenderBody()
         </main>
     </div>
@@ -83,23 +82,26 @@
                 </div>
                 <div class="modal-body">
 
-                    <div class="form-group">
+                    <div class="form-group has-error has-feedback">
                         <label for="userName" style="color:darkgoldenrod;" id="lblUserNumber"> User Name:</label>
-                        <input type="text" class="form-control" id="usr" required>
+                        <input type="text" class="form-control" id="usr" placeholder="User name">
+                        <p id="UserNameRequired" style="display:none;"></p>
                     </div>
                     <div class="form-group">
                         <label for="pwd" style="color:darkgoldenrod;" id="lblPassword">Password:</label>
-                        <input type="password" class="form-control" id="pwd" required>
+                        <input type="password" class="form-control" id="pwd" placeholder="Password" required>
+                        <p id="PasswordRequired" style="display:none;"></p>
                     </div>
                     <div class="form-group">
                         <label for="confirmpwd" style="color:darkgoldenrod;display:none" id="lblConfirmpassword">Confirm Password:</label>
-                        <input type="password" style="display:none" class="form-control" id="confirmpwd" required="true">
+                        <input type="password" style="display:none" class="form-control" id="confirmpwd" placeholder="Confirm Password">
+                        <p id="ConfirmPasswordSame" style="display:none;"></p>
                     </div>
 
                 </div>
                 <div class="modal-footer" style="align-content:center;">
                     @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
-                    <p id="registermsg" style="color:red;display:none;padding-right:100px;"></p>
+                    <p id="registermsg" style="display:none;padding-right:100px;"></p>
                     <input type="submit" class="btn btn-info" style="color:darkgoldenrod;background-color:white;display:none;" value="Register" id="btnRegister">
                     <input type="submit" class="btn btn-info" style="color:darkgoldenrod;background-color:white;" value="Login" id="btnLogin" visible="false">
                 </div>
@@ -123,51 +125,105 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/modalpopup.js"></script>
     <script type="text/javascript">
-        $("#btnRegister").click(function () {
-            var uname = $("#usr").val();
-            var pwd = $("#pwd").val();
 
-            $.ajax({
-                type: 'POST',
-                url: "../User/Register",
-                data: { username: uname, password: pwd },
-                success: function (result) {
-                    $("#registermsg").text(result);
-                    $("#registermsg").show();
-                }
-            })
-        });
-
-        $("#btnLogin").click(function () {
-            var uname = $("#usr").val();
-            var pwd = $("#pwd").val();
-
-         $.get('/User/Login/', function () {
-
-
-             window.location.href = '@Url.Action("Login","User")'
-         });
-
-        });
-
-        @*var sessionUserDetails = '@HttpContextAccessor.HttpContext.Session.GetString("UserName")';
-        if (sessionUserDetails == null)
-        {
-            $("#sessionuser").text("");
-            document.getElementById("sessionuser").style = "display:none;"
-
-            $("#btnLogOut").hide();
+    var sessionUserDetails = '@HttpContextAccessor.HttpContext.Session.GetString("UserName")';
+    if (sessionUserDetails == "") {
+        $("#sessionuser").text("");
+        document.getElementById("sessionuser").style = "display:none;"
+        $("#linkregister").show();
+        $("#btnLogout").hide();
+        $("#assesment").hide();
+    }
+    else {
+        //Show the Session Text
+        $("#sessionuser").show();
+        $("#sessionuser").text("Welcome    " + sessionUserDetails);
+        $("#linkregister").hide();
+        $("#btnLogout").show();
+        $("#assesment").show();
         }
-        else
-        {
-            //Show the Session Text
-             $("#sessionuser").show();
-             $("#sessionuser").text(sessionUserDetails);
-            //Show the Log out Button
-            $("#btnLogOut").show();
-        }*@
+        $("#btnRegister").click(function () {
 
-       
+         var uname = $("#usr").val();
+         var pwd = $("#pwd").val();
+         var cnfrmpwd = $("#confirmpwd").val();
+
+
+       if (uname == "")
+       {
+           $("#UserNameRequired").show();
+           $("#UserNameRequired").text("The User Name Feild is required");
+           return false;
+       }
+       if (pwd == "")
+       {
+           $("#PasswordRequired").show();
+           $("#PasswordRequired").text("The Password Feild is required");
+           return false;
+       }
+
+        if (pwd != cnfrmpwd) {
+
+            $("#ConfirmPasswordSame").show();
+            $("#ConfirmPasswordSame").text(" Password and Confirm Password should be same");
+            return false;
+        }
+
+
+    $.ajax({
+        type: 'POST',
+        url: "../User/Register",
+        data: { username: uname, password: pwd },
+        success: function (result) {
+            $("#registermsg").text(result);
+            $("#registermsg").show();
+
+            document.getElementById("UserNameRequired").style = "display:none;"
+            document.getElementById("PasswordRequired").style = "display:none;"
+            document.getElementById("ConfirmPasswordSame").style = "display:none;"
+        }
+    })
+});
+
+$("#btnLogin").click(function () {
+    var uname = $("#usr").val();
+    var pwd = $("#pwd").val();
+
+      
+       if (uname == "")
+       {
+           $("#UserNameRequired").show();
+           $("#UserNameRequired").text("The User Name Feild is required");
+           return false;
+       }
+       if (pwd == "")
+       {
+           $("#PasswordRequired").show();
+           $("#PasswordRequired").text("The Password Feild is required");
+           return false;
+       }
+
+
+
+
+     $.ajax({
+        type: 'POST',
+        url: "../User/Login",
+        data: { username: uname, password: pwd },
+        success: function (result) {
+           window.location.href = '@Url.Action("Index","Home")'
+            //alert("Hi..");
+            document.getElementById("UserNameRequired").style = "display:none;"
+            document.getElementById("PasswordRequired").style = "display:none;"
+            document.getElementById("ConfirmPasswordSame").style = "display:none;"
+        }
+    })
+
+});
+
+   
+ 
+
 
 
     </script>

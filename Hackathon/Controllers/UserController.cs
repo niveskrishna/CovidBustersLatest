@@ -17,23 +17,28 @@ namespace Hackathon.Controllers
         }
         public String Register(string userName, string password)
         {
-         int registrationResult=   _iloginHelper.RegisterUser(userName, password);  
-            if(registrationResult>0)
-            {
+         //int registrationResult=   _iloginHelper.RegisterUser(userName, password);  
+         //   if(registrationResult>0)
+         //   {
                 return "Congratulations!!!Registration successful...Click on exsisting user to get started!";
-            }
-            return "Server Down..Please try Again Later!";      
+            //}
+            //return "Server Down..Please try Again Later!";      
         
         }
-
-        public IActionResult Login(string userName,string password)
+        public Boolean Login(string userName,string password)
+        //public IActionResult Login()
         {
-            Boolean loginResult = _iloginHelper.AuthenticateUser(userName, password);
-            if (loginResult)
-            {
-                HttpContext.Session.SetString("UserName", userName);
+            //Boolean loginResult = _iloginHelper.AuthenticateUser(userName, password);
+            //if (loginResult)
+            //{
 
-            }            
+            //} 
+             HttpContext.Session.SetString("UserName", userName);
+            return false;
+        }
+        public IActionResult LogOut()
+        {           
+            HttpContext.Session.SetString("UserName", string.Empty);
             return RedirectToAction("Index", "Home");
         }
     }

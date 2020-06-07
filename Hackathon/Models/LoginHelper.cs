@@ -26,7 +26,7 @@ namespace Hackathon.Models
         {
             try
             {
-                // _oleDbConnection.ConnectionString = "jdbc:db2://dashdb-txn-sbox-yp-lon02-02.services.eu-gb.bluemix.net:50001/BLUDB:user=vnj78638;password=Tanenbaum@1991;sslConnection=true;provider=IBMDADB2;";
+                // _oleDbConnection.ConnectionString = "jdbc:db2://dashdb-txn-sbox-yp-lon02-02.services.eu-gb.bluemix.net:50001/BLUDB:user=vnj78638;;sslConnection=true;provider=IBMDADB2;";
                 _oleDbConnection.ConnectionString = "Provider=DB2OLEDB;Network Transport Library=TCPIP;Network Address=159.122.202.228;Initial Catalog=BLUDB;Package Collection=MyPkgCol;Default Schema=VNJ78638;User ID=vnj78638;Password=Tanenbaum@1991;";
 
 

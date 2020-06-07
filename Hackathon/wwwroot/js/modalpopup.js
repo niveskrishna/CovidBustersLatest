@@ -19,7 +19,11 @@ $("#newuserhref").click(function () {
     //Changing the text of submit button
     $("#btnRegister").show();
     $("#btnLogin").hide();
-    document.getElementById("#registermsg").style="display:none;"
+    document.getElementById("registermsg").style = "display:none;"
+
+    document.getElementById("UserNameRequired").style = "display:none;"
+    document.getElementById("PasswordRequired").style = "display:none;"
+    document.getElementById("ConfirmPasswordSame").style = "display:none;"
 });
 
 //On Clicking the exsiting user hyperlink
@@ -46,13 +50,24 @@ $("#existinguserhref").click(function () {
     $("#btnRegister").hide();
     $("#btnLogin").show();
     document.getElementById("registermsg").style = "display:none;"
+    document.getElementById("UserNameRequired").style = "display:none;"
+    document.getElementById("PasswordRequired").style = "display:none;"
+    document.getElementById("ConfirmPasswordSame").style = "display:none;"
 
 
 });
 
 $("#modalclosed").click(function () {
     document.getElementById("registermsg").style = "display:none;"
+    document.getElementById("UserNameRequired").style = "display:none;"
+    document.getElementById("PasswordRequired").style = "display:none;"
+    document.getElementById("ConfirmPasswordSame").style = "display:none;"
 
 });
+
+
+
+  
+
 
 
